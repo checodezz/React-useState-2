@@ -75,11 +75,33 @@ const FruitSelecctor = () => {
   );
 }; */
 
+//Important, got struck many times
 
 const FruitSelector = () => {
   const fruits = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+  const [currentFruit, setSelectedFruit] = useState(null);
 
-}
+  const fruitList = fruits.map((fruit, index) => (
+    <li
+      key={index}
+      onClick={() => setSelectedFruit(fruit)}
+      style={{ cursor: "pointer" }}
+    >
+      {fruit}
+    </li>
+  ));
+
+  const displaySelectedFruit = () => {
+    return currentFruit ? <p>You Selected: {currentFruit}</p> : null;
+  };
+
+  return (
+    <div>
+      <ul>{fruitList}</ul>
+      {displaySelectedFruit()}
+    </div>
+  );
+};
 export default function App() {
   return (
     <main>
